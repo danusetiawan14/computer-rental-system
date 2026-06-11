@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Pengaturan Tarif</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+<h2>Pengaturan Tarif</h2>
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Paket</th>
+<th>Harga</th>
+<th>Aksi</th>
+</tr>
+
+{% for t in tarif %}
+
+<tr>
+
+<td>{{ t[0] }}</td>
+<td>{{ t[1] }}</td>
+<td>Rp {{ t[2] }}</td>
+
+<td>
+
+<a href="/edit_tarif/{{ t[0] }}"
+   class="btn btn-warning btn-sm">
+   Edit
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a href="/" class="btn btn-primary">
+Kembali
+</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}
+Laporan Transaksi
+{% endblock %}
+
+{% block content %}
+
+<h2>Laporan Transaksi</h2>
+
+<p class="text-muted">
+Riwayat seluruh transaksi rental komputer
+</p>
+
+<div class="row mb-4">
+
+```
+<div class="col-md-6">
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body text-center">
+
+            <i class="bi bi-cash-stack fs-1 text-success"></i>
+
+            <h6 class="mt-2">
+                Total Pendapatan
+            </h6>
+
+            <h3>
+                Rp {{ "{:,}".format(total_pendapatan) }}
+            </h3>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-6">
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body text-center">
+
+            <i class="bi bi-receipt fs-1 text-primary"></i>
+
+            <h6 class="mt-2">
+                Total Transaksi
+            </h6>
+
+            <h3>
+                {{ total_transaksi }}
+            </h3>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<div class="card shadow-sm">
+
+```
+<div class="card-header d-flex justify-content-between">
+
+    <strong>Data Transaksi</strong>
+
+    <a href="/export_excel"
+       class="btn btn-success btn-sm">
+
+       Export Excel
+
+    </a>
+
+</div>
+
+<div class="card-body">
+
+    <table class="table table-hover table-striped">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>ID</th>
+                <th>PC</th>
+                <th>Mulai</th>
+                <th>Selesai</th>
+                <th>Durasi</th>
+                <th>Total</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for trx in transaksi %}
+
+            <tr>
+
+                <td>{{ trx[0] }}</td>
+
+                <td>
+                    <span class="badge bg-primary">
+                        {{ trx[1] }}
+                    </span>
+                </td>
+
+                <td>{{ trx[2] }}</td>
+
+                <td>{{ trx[3] }}</td>
+
+                <td>{{ trx[4] }} Jam</td>
+
+                <td>
+
+                    <strong class="text-success">
+
+                        Rp {{ "{:,}".format(trx[5]) }}
+
+                    </strong>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+```
+
+</div>
+
+{% endblock %}

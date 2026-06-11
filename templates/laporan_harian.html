@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laporan Harian</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h2>Laporan Harian</h2>
+
+    <hr>
+
+    <p>
+        <b>Tanggal :</b>
+        {{ tanggal }}
+    </p>
+
+    <div class="card mb-3">
+        <div class="card-body">
+
+            <h4>
+                Jumlah Transaksi
+            </h4>
+
+            <h2>
+                {{ jumlah_transaksi }}
+            </h2>
+
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <h4>
+                Pendapatan Hari Ini
+            </h4>
+
+            <h2>
+                Rp {{ total_pendapatan }}
+            </h2>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <a href="/" class="btn btn-primary">
+        Kembali Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

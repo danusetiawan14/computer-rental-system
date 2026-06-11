@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+<div id="jam"></div>
+<h2>
+Dashboard
+</h2>
+
+<p class="text-muted">
+Monitoring Rental Komputer
+</p>
+<div class="row mb-4">
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-pc-display fs-1 text-primary"></i>
+
+                <h6 class="mt-2">
+                    PC Aktif
+                </h6>
+
+                <h2>
+                    {{ pc_aktif }}
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-receipt fs-1 text-success"></i>
+
+                <h6 class="mt-2">
+                    Total Transaksi
+                </h6>
+
+                <h2>
+                    {{ jumlah_transaksi }}
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-cash-coin fs-1 text-warning"></i>
+
+                <h6 class="mt-2">
+                    Total Pendapatan
+                </h6>
+
+                <h2>
+                    Rp {{ "{:,}".format(total_pendapatan) }}
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="col-md-10">
+
+    <div class="p-4">
+
+    <div class="mb-4">
+
+        <a href="/laporan" class="btn btn-primary">
+            Laporan Transaksi
+        </a>
+
+        <a href="/laporan_harian" class="btn btn-success">
+            Laporan Harian
+        </a>
+
+        <a href="/backup" class="btn btn-secondary">
+            Backup Database
+        </a>
+	<a href="/export_excel"
+            class="btn btn-info">
+            Export Excel
+        </a>
+	<a href="/tarif"
+           class="btn btn-dark">
+           Pengaturan Tarif
+        </a>
+
+    </div>
+
+    <div class="row">
+
+        {% for pc in komputer %}
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+                            <h5>{{ pc[1] }}</h5>
+                            <small class="text-muted">
+                                Komputer Rental
+                            </small>
+                        </div>
+
+                        <i class="bi bi-pc-display fs-2"></i>
+
+                    </div>
+
+                    {% if pc[2] == "Kosong" %}
+
+                        <span class="badge bg-success">
+                            Kosong
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge bg-danger">
+                            Dipakai
+                        </span>
+
+                    {% endif %}
+
+                    <hr>
+
+                    {% if pc[2] == "Kosong" %}
+
+                    <a href="/start/{{ pc[0] }}"
+                       class="btn btn-success w-100">
+                        Mulai Rental
+                    </a>
+
+                    {% else %}
+
+                    <a href="/stop/{{ pc[0] }}"
+                       class="btn btn-warning w-100">
+                        Selesai Rental
+                    </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="card shadow-sm mb-4">
+
+<div class="card-header">
+
+Rental Aktif
+
+</div>
+
+<div class="card-body">
+
+<table class="table">
+
+<thead>
+
+<tr>
+<th>PC</th>
+<th>Status</th>
+<th>Mulai</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for pc in komputer %}
+
+{% if pc[2] == "Dipakai" %}
+
+<tr>
+
+<td>{{ pc[1] }}</td>
+
+<td>
+<span class="badge bg-danger">
+Aktif
+</span>
+</td>
+
+<td>{{ pc[3] }}</td>
+
+</tr>
+
+{% endif %}
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<hr>
+
+<div class="text-center text-muted">
+
+    DigitalRezeki Rental System v1.0
+
+    <br>
+
+    Developed by Danu Setiawan
+
+</div>
+
+<script>
+
+function updateJam(){
+
+    const now = new Date();
+
+    document.getElementById("jam").innerHTML =
+        now.toLocaleString();
+
+}
+
+setInterval(updateJam,1000);
+
+updateJam();
+
+</script>
+
+{% endblock %}
