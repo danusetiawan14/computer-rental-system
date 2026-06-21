@@ -1,49 +1,46 @@
-# Computer Rental Management System
+# DigitalRezeki Rental System v1.0
 
-A web-based rental management application developed using Python Flask.
+## Deskripsi
 
-## Overview
+DigitalRezeki Rental System adalah aplikasi manajemen rental komputer berbasis Python Flask yang dirancang untuk membantu operasional usaha rental komputer secara cepat, mudah, dan terintegrasi.
 
-This system helps rental businesses manage computer usage, rental transactions, billing, and revenue reporting through a centralized dashboard.
+## Fitur Utama
 
-## Features
+* Login Multi User
+* Dashboard Monitoring
+* Manajemen Member
+* Topup Saldo
+* Rental Komputer
+* Timer Realtime
+* Cetak Struk
+* Laporan Transaksi
+* Laporan Harian
+* Export Excel
+* Export PDF
+* Audit Log
+* Backup Database
+* Grafik Pendapatan
 
-### Rental Operations
+## Teknologi
 
-* Start Rental
-* Stop Rental
-* Real-Time PC Monitoring
-* Rental Duration Tracking
-
-### Financial Management
-
-* Automated Billing
-* Revenue Dashboard
-* Daily Transaction Report
-* Tariff Configuration
-
-### System Utilities
-
-* Database Backup
-* Excel Export
-* Transaction History
-
-## Technology Stack
-
-* Python
+* Python 3.14
 * Flask
 * SQLite
-* Bootstrap
-* HTML
-* CSS
-* JavaScript
+* Bootstrap 5
+* Chart.js
+* OpenPyXL
+* ReportLab
 
-## Screenshots
+## Login Default
 
-### Dashboard
+Username : admin
 
-![Dashboard](screenshots/dashboard.png)
+Password : admin123
 
 ## Developer
 
 Danu Setiawan
+
+## Version
+
+v1.0
